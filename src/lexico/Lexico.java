@@ -371,5 +371,4 @@ public class Lexico {
         }//fin de switch
     }//fin del metodo PalabraReservada
 
-
 }//fin de la clase Lexico
