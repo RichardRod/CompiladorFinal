@@ -1,6 +1,6 @@
 package principal;
 
-import lexico.Lexico;
+import sintactico.Sintactico;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -46,12 +46,13 @@ public class Ventana extends JFrame implements ActionListener {
 
         tablaResultados = new JTable(new DefaultTableModel(new Object[][]{},
                 new String[]{
-                        "Simbolo", "Tipo",}));
-        tablaResultados.setBounds(800, 50, 400, 500);
+                        "Elementos en pila", "Entrada", "Accion",}));
+        tablaResultados.setBounds(600, 50, 650, 500);
+        tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(350);
         add(tablaResultados);
 
         desplazamientoTabla = new JScrollPane(tablaResultados);
-        desplazamientoTabla.setBounds(800, 50, 400, 500);
+        desplazamientoTabla.setBounds(600, 50, 650, 500);
         add(desplazamientoTabla);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,19 +81,19 @@ public class Ventana extends JFrame implements ActionListener {
 
         String fuente = txtFuente.getText();
 
-        Lexico lexico = new Lexico();
+        /*Lexico lexico = new Lexico();
         lexico.entrada(fuente);
-
-        while (lexico.getSimbolo().compareTo("$") != 0)
+        while (lexico.simbolo.compareTo("$") != 0)
         {
             lexico.siguienteSimbolo();
-
-            filas[0] = lexico.getSimbolo();
-            filas[1] = lexico.tipoACad(lexico.getTipo());
-
+                filas[0] = lexico.simbolo;
+                filas[1] = lexico.simboloCadena(lexico.tipo);
             modeloTabla.addRow(filas);
             tablaResultados.setModel(modeloTabla);
         }//fin de while
+        */
+
+        analisisSintactico(fuente, tablaResultados);
 
     }//fin del metodo analizar
 
@@ -125,10 +126,14 @@ public class Ventana extends JFrame implements ActionListener {
 
             fr.close();
         }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+        catch(Exception e) {}
+    }
+
+    private void analisisSintactico(String entrada, JTable tablaResultados)
+    {
+        Sintactico sintactico = new Sintactico(tablaResultados);
+        sintactico.setEntrada(entrada);
+        sintactico.Gramatica_3();
     }
 
 }//fin de la clase Ventana
