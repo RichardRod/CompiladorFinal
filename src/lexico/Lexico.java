@@ -129,7 +129,7 @@ public class Lexico {
                 tipo = TipoSimbolo.REAL;
                 break;
 
-            case 5:
+            case 26:
                 tipo = TipoSimbolo.CADENA;
                 break;
 

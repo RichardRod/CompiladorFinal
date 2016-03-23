@@ -30,8 +30,9 @@ public class Estados {
     public static final int q23 = 23;
     public static final int q24 = 24;
     public static final int q25 = 25;
-    public static final int ACP = 26;
-    public static final int ERR = 27;
+    public static final int q26 = 26;
+    public static final int ACP = 27;
+    public static final int ERR = 28;
 
     public static int[][] tablaEstados =
     {
@@ -43,7 +44,7 @@ public class Estados {
             {ERR,  q03, ERR, ERR, ERR,  ERR,  ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR,  ERR}, //q02
             {ACP,  q03, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q03
             {q05,  q05, q05, q05, q05,  q05,  q05, q05, q05, q05, q05, q05, q05, q05, q05, q05, q05, ERR, q05,  q05}, //q04
-            {q05,  q05, q05, /**/q06, q05,  q05,  q05, q05, q05, q05, q05, q05, q05, q05, q05, q05, q05, ERR, q05,  q05}, //q05
+            {q05,  q05, q05, /**/q26, q05,  q05,  q05, q05, q05, q05, q05, q05, q05, q05, q05, q05, q05, ERR, q05,  q05}, //q05
             {q06,  q06, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q06
             {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, q08, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q07
             {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q08
@@ -64,6 +65,8 @@ public class Estados {
             {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q23
             {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q24
             {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q25
-            {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q26
+            {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP},
+            {ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP, ACP}, //q27 ACP
+
     }; //fin de la tabla de estados
 }
