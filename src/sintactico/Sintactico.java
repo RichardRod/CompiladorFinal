@@ -55,63 +55,120 @@ public class Sintactico {
         return entrada;
     }
 
-    /*public void analisisSintactico() {
+    public void analisisSintactico() {
+        DefaultTableModel modeloTabla = (DefaultTableModel)tablaResultados.getModel();
+        Object[] filas = new Object[3];
+
+        //System.out.println("Cuajo: " + );
+
         accion = 0;
         pila.push(new Terminal(TipoSimbolo.PESOS, "$"));
         pila.push(new Estado(0));
-        //Console.WriteLine ("Elementos en pila:", "{0}");
-        while (true) {
-            lexico.siguienteSimbolo();
-            fila = pila.peek().getId();
-            columna = lexico.tipo;
-            accion = tabla[fila][columna];
+        lexico.siguienteSimbolo();
+
+        while(true)
+        {
+            fila = pila.peek ().getId();
+            columna = lexico.getTipo();
+            accion = tabla[fila] [columna];
+
+
             ElementoPila[] elementos = new ElementoPila[pila.size()];
             String elementosEnPila = "";
             for (int i = 0; i < elementos.length; i++) {
                 elementos[i] = pila.get(i);
             }
+
+            //reversar
+            Collections.reverse(Arrays.asList(elementos));
+
             for (int i = elementos.length - 1; i >= 0; i--) {
                 elementosEnPila += elementos[i].getElemento();
             }
-            //Console.WriteLine (elementosPila + " - " + lexico.simbolo + " - " + accion);
-            if (accion > 0) { //desplazamiento
-                pila.push(new Terminal(lexico.tipo, lexico.simbolo));
+
+
+
+            filas[0] = elementosEnPila;
+            filas[1] = lexico.getSimbolo();
+            filas[2] = accion;
+
+            modeloTabla.addRow(filas);
+            tablaResultados.setModel(modeloTabla);
+            //System.out.printf("%50s%10s%10s\n", elementosEnPila, lexico.simbolo, accion);
+
+            if(accion > 0) // desplazamiento
+            {
+                pila.push(new Terminal(lexico.getTipo(), lexico.getSimbolo()));
                 pila.push(new Estado(accion));
+                lexico.siguienteSimbolo();
+
             }//fin de if
-            else if (accion < 0) { //reduccion, aceptacion
-                if (accion == -1) { //aceptacion
+
+            else if(accion < 0) //aceptacion reduccion
+            {
+                if(accion == -1)
+                {
                     fila = pila.peek().getId();
-                    columna = lexico.tipo;
+                    columna = lexico.getTipo();
                     accion = tabla[fila][columna];
-                    //Console.WriteLine("Aceptacion");
                     break;
                 }//fin de if
-                int posicionReduccion = (accion * -1) - 2;
-                switch (posicionReduccion) {
-                    case 1:
+
+                int regla = -(accion + 2);
+                int reglaAux = (regla + 1);
+
+                switch(reglaAux)
+                {
+
+
+                    case 36: //<Termino> ::= id
                         nodo = new Identificador(pila);
                         break;
+
+                    case 37: //<Termino> ::= entero
+                        nodo = new Entero(pila);
+                        break;
+
+                    case 46: //<Expresion> ::= <Termino> * <Termino>
+                        nodo = new Multiplicacion(pila);
+                        break;
+
+                    case 47:  //<Expresion> ::= <Termino> + <Termino>
+                        nodo = new Suma(pila);
+                        break;
+
+                    case 52: //<Expresion> ::= <Termino>
+                        pila.pop();
+                        nodo = pila.pop().getNodo();
+                        break;
+
                     default:
-                        for (int i = 0; i < lonReglas[posicionReduccion] * 2; i++) {
+                        for(int i = 0; i < lonReglas[regla] * 2; i++){
                             pila.pop();
-                        }//fin de for
+                        }
                         break;
                 }//fin de switch
+
                 fila = pila.peek().getId();
-                columna = idReglas[posicionReduccion];
-                accion = tabla[fila][columna];
-                nt = new NoTerminal(idReglas[posicionReduccion], strReglas[posicionReduccion]);
+                columna = idReglas[regla];
+                accion = tabla[fila] [columna];
+
+                nt = new NoTerminal(idReglas[regla], strReglas[regla]);
                 nt.setNodo(nodo);
+
                 pila.push(nt);
                 pila.push(new Estado(accion));
             }//fin de else if
-            if (accion == 0) { //error
-                //Console.WriteLine ("Error");
+
+            if(accion == 0)
                 return;
-            }//fin de if
+
+
+
         }//fin de while
+
     }//fin del metodo analisisSintactico
-    */
+
 
     private void cargarArchivo() {
         try {
@@ -124,19 +181,16 @@ public class Sintactico {
                 String arreglo[] = linea.split("\\s+");
 
 
-                //System.out.println("Linea: " + contadorLinea);
-
                 for (int i = 0; i < arreglo.length && contadorLinea < 53; i++) {
-                    //System.out.println("Pos: " + i + " - " + arreglo[i]);
                     if (contadorLinea > 0) {
                         if (i == 0) {
-                            //idReglas[contadorLinea - 1] = Integer.valueOf(arreglo[i]);
+                            idReglas[contadorLinea - 1] = Integer.valueOf(arreglo[i]);
                         }
                         if (i == 1) {
-                            //lonReglas[contadorLinea - 1] = Integer.valueOf(arreglo[i]);
+                            lonReglas[contadorLinea - 1] = Integer.valueOf(arreglo[i]);
                         }
                         if (i == 2) {
-                            //strReglas[contadorLinea - 1] = arreglo[i];
+                            strReglas[contadorLinea - 1] = arreglo[i];
                         }
 
                     }//fin de if
@@ -144,30 +198,19 @@ public class Sintactico {
 
                 for (int i = 0; i < arreglo.length; i++) {
                     if (contadorLinea > 53) {
-                        //System.out.println("Pos: " + i + " - " + arreglo[i]);
-                        //tabla[contadorLinea - 54][i] = Integer.valueOf(arreglo[i]);
+                        tabla[contadorLinea - 54][i] = Integer.valueOf(arreglo[i]);
                     }
                 }
-
                 contadorLinea++;
-
             }//fin de while
 
-            /*for(int i = 0; i < strReglas.length; i++){
-                System.out.println(strReglas[i]);
-            }*/
-
-            /*for (int i = 0; i < 95; i++) {
-                for (int j = 0; j < 46; j++) {
-                    System.out.print(tabla[i][j]);
-                }
-                System.out.println();
-            }*/
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
+
 
     public void Gramatica_3()
     {

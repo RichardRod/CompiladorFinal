@@ -72,8 +72,6 @@ public class Lexico {
             else if (esEspacio(c)) entrada = 18;
             else entrada = 19;
 
-            System.out.println(entrada + " " + estado);
-
             anterior = estado;
             estado = siguienteEstado(entrada);
 

@@ -2,14 +2,12 @@ package sintactico;
 
 import java.util.Stack;
 
-public class Arbol {
-
-
-}//fin de la clase Arbol
-
-class Nodo extends Arbol{
+class Nodo
+{
     //atributos
+    Nodo nodoIzquierdo;
     public String simbolo;
+    Nodo nodoDerecho;
 
     //constructor sin parametros
     public Nodo() {
@@ -17,14 +15,23 @@ class Nodo extends Arbol{
     }//fin del constructor sin parametros
 
     //constructor parametrizado
-    public Nodo(Nodo nodo) {
-
+    public Nodo(String simbolo) {
+        this.simbolo = simbolo;
+        nodoIzquierdo = nodoDerecho = null;
     }//fin del constrcutor parametrizado
 
-    public void muestra() {
-    }
+
 
 }//fin de la clase Nodo
+
+class Programa extends Nodo
+{
+    public Programa(Stack<ElementoPila> pila){
+        simbolo = "<Programa>";
+        pila.pop();
+
+    }
+}//fin de la clase Programa
 
 class Identificador extends Nodo {
 
@@ -48,18 +55,25 @@ class Entero extends Nodo {
 
 class Suma extends Nodo {
 
-    Nodo nodoIzquierdo;
-    Nodo nodoDerecho;
+    String operador;
+
 
     //constructor
     public Suma(Stack<ElementoPila> pila) {
+
+        simbolo = "<Expresion>";
+
         pila.pop();
         //simbolo = ((Terminal)pila.Pop()).Elemento;
-        nodoDerecho = new Nodo(pila.pop().getNodo());
+        nodoDerecho = (pila.pop().getNodo());
         pila.pop();
-        simbolo = pila.pop().getElemento();
+        operador = pila.pop().getElemento();
         pila.pop();
-        nodoIzquierdo = new Nodo(pila.pop().getNodo());
+        nodoIzquierdo = (pila.pop().getNodo());
+
+        System.out.println(nodoDerecho.toString() + " " + operador + " " + nodoIzquierdo.toString());
+
+
 
     }//fin del constructor
 
@@ -67,17 +81,19 @@ class Suma extends Nodo {
 
 class Multiplicacion extends Nodo {
 
-    Nodo nodoDerecho;
-    Nodo nodoIzquierdo;
+    String operador;
 
     //constructor
     public Multiplicacion(Stack<ElementoPila> pila) {
+        simbolo = "<Expresion>";
         pila.pop();
-        nodoDerecho = new Nodo(pila.pop().getNodo());
+        nodoDerecho = (pila.pop().getNodo());
         pila.pop();
-        simbolo = pila.pop().getElemento();
+        operador = pila.pop().getElemento();
         pila.pop();
-        nodoIzquierdo = new Nodo(pila.pop().getNodo());
+        nodoIzquierdo = (pila.pop().getNodo());
+
+        System.out.println(nodoDerecho.toString() + " " + operador + " " + nodoIzquierdo.toString());
 
     }//fin del constructor
 }//fin de la clase Multiplicacion
