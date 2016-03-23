@@ -121,92 +121,49 @@ public class Lexico {
         int tipo;
 
         switch (estado) {
-            case 1:
-                tipo = TipoSimbolo.ENTERO;
+            case 1: tipo = TipoSimbolo.ENTERO;
                 break;
-
-            case 3:
-                tipo = TipoSimbolo.REAL;
+            case 3: tipo = TipoSimbolo.REAL;
                 break;
-
-            case 26:
-                tipo = TipoSimbolo.CADENA;
+            case 26: tipo = TipoSimbolo.CADENA;
                 break;
-
-            case 6:
-                tipo = TipoSimbolo.IDENTIFICADOR;
+            case 6: tipo = TipoSimbolo.IDENTIFICADOR;
                 break;
-
-            case 7:
-                tipo = TipoSimbolo.opRELAC;
+            case 7: tipo = TipoSimbolo.opRELAC;
                 break;
-
-            case 8:
-                tipo = TipoSimbolo.opRELAC;
+            case 8: tipo = TipoSimbolo.opRELAC;
                 break;
-
-            case 9:
-                tipo = TipoSimbolo.opSUMA;
+            case 9: tipo = TipoSimbolo.opSUMA;
                 break;
-
-            case 10:
-                tipo = TipoSimbolo.opMULT;
+            case 10: tipo = TipoSimbolo.opMULT;
                 break;
-
-            case 12:
-                tipo = TipoSimbolo.opOR;
+            case 12: tipo = TipoSimbolo.opOR;
                 break;
-
-            case 14:
-                tipo = TipoSimbolo.opAND;
+            case 14: tipo = TipoSimbolo.opAND;
                 break;
-
-            case 15:
-                tipo = TipoSimbolo.opNOT;
+            case 15: tipo = TipoSimbolo.opNOT;
                 break;
-
-            case 16:
-                tipo = TipoSimbolo.opIGUALDAD;
+            case 16: tipo = TipoSimbolo.opIGUALDAD;
                 break;
-
-            case 17:
-                tipo = TipoSimbolo.IGUAL;
+            case 17: tipo = TipoSimbolo.IGUAL;
                 break;
-
-            case 18:
-                tipo = TipoSimbolo.opIGUALDAD;
+            case 18: tipo = TipoSimbolo.opIGUALDAD;
                 break;
-
-            case 19:
-                tipo = TipoSimbolo.PUNTO_COMA;
+            case 19: tipo = TipoSimbolo.PUNTO_COMA;
                 break;
-
-            case 20:
-                tipo = TipoSimbolo.COMA;
+            case 20: tipo = TipoSimbolo.COMA;
                 break;
-
-            case 21:
-                tipo = TipoSimbolo.PARENTESIS_INICIO;
+            case 21: tipo = TipoSimbolo.PARENTESIS_INICIO;
                 break;
-
-            case 22:
-                tipo = TipoSimbolo.PARENTESIS_FIN;
+            case 22: tipo = TipoSimbolo.PARENTESIS_FIN;
                 break;
-
-            case 23:
-                tipo = TipoSimbolo.LLAVE_INICIO;
+            case 23: tipo = TipoSimbolo.LLAVE_INICIO;
                 break;
-
-            case 24:
-                tipo = TipoSimbolo.LLAVE_FIN;
+            case 24: tipo = TipoSimbolo.LLAVE_FIN;
                 break;
-
-            case 25:
-                tipo = TipoSimbolo.PESOS;
+            case 25: tipo = TipoSimbolo.PESOS;
                 break;
-
-            default:
-                tipo = TipoSimbolo.ERROR;
+            default: tipo = TipoSimbolo.ERROR;
                 break;
         }//fin de switch
 
@@ -240,107 +197,57 @@ public class Lexico {
         String cad = "";
 
         switch (tipo) {
-            case TipoSimbolo.IDENTIFICADOR:
-                cad = "Identificador";
+            case TipoSimbolo.IDENTIFICADOR: cad = "Identificador";
                 break;
-
-            case TipoSimbolo.ENTERO:
-                cad = "Entero";
+            case TipoSimbolo.ENTERO: cad = "Entero";
                 break;
-
-            case TipoSimbolo.REAL:
-                cad = "Real";
+            case TipoSimbolo.REAL: cad = "Real";
                 break;
-
-            case TipoSimbolo.CADENA:
-                cad = "Cadena";
+            case TipoSimbolo.CADENA: cad = "Cadena";
                 break;
-
-            case TipoSimbolo.TIPO:
-                cad = "Tipo";
+            case TipoSimbolo.TIPO: cad = "Tipo";
                 break;
-
-            case TipoSimbolo.opSUMA:
-                cad = "Operador Suma";
+            case TipoSimbolo.opSUMA: cad = "Operador Suma";
                 break;
-
-            case TipoSimbolo.opMULT:
-                cad = "Operador Multiplicacion";
+            case TipoSimbolo.opMULT: cad = "Operador Multiplicacion";
                 break;
-
-            case TipoSimbolo.opRELAC:
-                cad = "Operador Relacional";
+            case TipoSimbolo.opRELAC: cad = "Operador Relacional";
                 break;
-
-            case TipoSimbolo.opOR:
-                cad = "Operador OR";
+            case TipoSimbolo.opOR: cad = "Operador OR";
                 break;
-
-            case TipoSimbolo.opAND:
-                cad = "Operador AND";
+            case TipoSimbolo.opAND: cad = "Operador AND";
                 break;
-
-            case TipoSimbolo.opNOT:
-                cad = "Operador NOT";
+            case TipoSimbolo.opNOT: cad = "Operador NOT";
                 break;
-
-            case TipoSimbolo.opIGUALDAD:
-                cad = "Operador Igualdad";
+            case TipoSimbolo.opIGUALDAD: cad = "Operador Igualdad";
                 break;
-
-            case TipoSimbolo.PUNTO_COMA:
-                cad = "Punto y Coma";
+            case TipoSimbolo.PUNTO_COMA: cad = "Punto y Coma";
                 break;
-
-            case TipoSimbolo.COMA:
-                cad = "Coma";
+            case TipoSimbolo.COMA: cad = "Coma";
                 break;
-
-            case TipoSimbolo.PARENTESIS_INICIO:
-                cad = "Parentesis Inicio";
+            case TipoSimbolo.PARENTESIS_INICIO: cad = "Parentesis Inicio";
                 break;
-
-            case TipoSimbolo.PARENTESIS_FIN:
-                cad = "Parentesis Fin";
+            case TipoSimbolo.PARENTESIS_FIN: cad = "Parentesis Fin";
                 break;
-
-            case TipoSimbolo.LLAVE_INICIO:
-                cad = "Llave Inicio";
+            case TipoSimbolo.LLAVE_INICIO: cad = "Llave Inicio";
                 break;
-
-            case TipoSimbolo.LLAVE_FIN:
-                cad = "Llave Fin";
+            case TipoSimbolo.LLAVE_FIN: cad = "Llave Fin";
                 break;
-
-            case TipoSimbolo.IGUAL:
-                cad = "Operador Asignacion";
+            case TipoSimbolo.IGUAL: cad = "Operador Asignacion";
                 break;
-
-            case TipoSimbolo.IF:
-                cad = "Palabra Reservada if";
+            case TipoSimbolo.IF: cad = "Palabra Reservada if";
                 break;
-
-            case TipoSimbolo.WHILE:
-                cad = "Palabra Reservada while";
+            case TipoSimbolo.WHILE: cad = "Palabra Reservada while";
                 break;
-
-            case TipoSimbolo.RETURN:
-                cad = "Palabra Reservada return";
+            case TipoSimbolo.RETURN: cad = "Palabra Reservada return";
                 break;
-
-            case TipoSimbolo.ELSE:
-                cad = "Palabra Reservada else";
+            case TipoSimbolo.ELSE: cad = "Palabra Reservada else";
                 break;
-
-            case TipoSimbolo.PESOS:
-                cad = "Fin de la entrada";
+            case TipoSimbolo.PESOS: cad = "Fin de la entrada";
                 break;
-
-            case TipoSimbolo.ERROR:
-                cad = "Error";
+            case TipoSimbolo.ERROR: cad = "Error";
                 break;
         }//fin de switch
-
 
         return cad;
     }//fin del metodo simboloCadena
