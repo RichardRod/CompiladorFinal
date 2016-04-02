@@ -20,7 +20,9 @@ class Nodo
         nodoIzquierdo = nodoDerecho = null;
     }//fin del constrcutor parametrizado
 
-
+    public void mostrar(){
+        System.out.println(nodoDerecho.simbolo + nodoIzquierdo.simbolo);
+    }
 
 }//fin de la clase Nodo
 

@@ -350,6 +350,8 @@ public class Sintactico {
 
         }//fin de while
 
+        nodo.mostrar();
+
     }//fin del metodo Gramatica 3
 
 
